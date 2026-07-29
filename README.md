@@ -247,7 +247,7 @@ WMH 0.05% — and is what every component of the objective is designed around.
 ```bibtex
 @inproceedings{msdistill2026,
   title     = {Region-Decoupled Distillation of a Transformer Teacher for
-               CPU-Deployable Multiple Sclerosis Lesion Segmentation},
+              Multiple Sclerosis Lesion Segmentation},
   author    = {Mehmood, M. Zakria},
   booktitle = {Proc. 23rd Int. Conf. Frontiers of Information Technology (FIT)},
   year      = {2026},
