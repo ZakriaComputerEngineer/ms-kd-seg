@@ -11,7 +11,7 @@ type: software
 license: MIT
 version: 1.0.0
 date-released: "2026-07-29"
-repository-code: "https://github.com/zakriamehmood/ms-kd-seg"
+repository-code: "https://github.com/ZakriaComputerEngineer/ms-kd-seg"
 keywords:
   - multiple sclerosis
   - lesion segmentation

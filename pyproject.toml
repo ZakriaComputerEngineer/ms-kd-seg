@@ -35,7 +35,7 @@ dependencies = [
 dev = ["pytest>=7.4", "ruff>=0.5"]
 
 [project.urls]
-Repository = "https://github.com/zakriamehmood/ms-kd-seg"
+Repository = "https://github.com/ZakriaComputerEngineer/ms-kd-seg"
 
 [tool.setuptools.packages.find]
 where = ["src"]

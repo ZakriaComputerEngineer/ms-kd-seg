@@ -1,8 +1,12 @@
 # Region-Decoupled Distillation for CPU-Deployable MS Lesion Segmentation
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](pyproject.toml)
+[![Data: CC BY 4.0](https://img.shields.io/badge/data-MS3SEG%20CC--BY--4.0-green.svg)](https://doi.org/10.6084/m9.figshare.30393475)
+
 Reference implementation for a study of **knowledge distillation from a transformer teacher into a
 0.49M-parameter U-Net** for four-class multiple sclerosis lesion segmentation on
-[MS3SEG](https://doi.org/10.1038/s41597-026-07184-5).
+[MS3SEG](https://doi.org/10.1038/s41597-026-07184-5). Accompanies a paper submitted to IEEE FIT 2026.
 
 The task separates *incidental* age-related white matter hyperintensity (WMH) from *pathological*
 demyelinating lesion — a distinction that matters clinically and is usually collapsed. The
@@ -227,10 +231,32 @@ T2-FLAIR at 0.90 × 0.90 × 5.73 mm; four-class expert annotation.
 - Paper: Bashiri Bawil et al., *Scientific Data* **13**, 867 (2026).
   [doi:10.1038/s41597-026-07184-5](https://doi.org/10.1038/s41597-026-07184-5)
 - Data: [doi:10.6084/m9.figshare.30393475](https://doi.org/10.6084/m9.figshare.30393475) (CC BY 4.0)
-- Code: [github.com/Mahdi-Bashiri/MS3SEG](https://github.com/Mahdi-Bashiri/MS3SEG) (MIT)
+- Upstream code: [github.com/Mahdi-Bashiri/MS3SEG](https://github.com/Mahdi-Bashiri/MS3SEG) (MIT)
 
-Class balance is extreme — background 99.55%, ventricles 0.30%, pathological WMH 0.10%, incidental
-WMH 0.05% — and is what every component of the objective is designed around.
+**No patient data is redistributed here.** Ethics approval (IR.TBZMED.REC.1402.902, Tabriz
+University of Medical Sciences) and consent are recorded in the data descriptor.
+
+### Getting it
+
+**On Kaggle** — add the mirrored dataset as an input (search `ms3seg`); the notebook locates it
+automatically, following symlinks, and prints a directory listing if it cannot.
+
+**Elsewhere** — download the Figshare record and extract `MS_100_patient_registered.rar` and
+`MS_100_model_input.rar`. Point `Config.data_root` at the directory containing both. The layout the
+code expects:
+
+```
+<data_root>/
+  MS_100_patient_registered/<id>/<id>_{T1WI_reg,T2WI_reg,FLAIR}.nii
+  MS_100_model_input/man_4L_masks_new/<id>.nii
+```
+
+You do not need the other archives (`_full`, `_nifti`, `_gifs`) — about 5 GB of the 6.7 GB total.
+
+Class balance is extreme, which is what every component of the objective is designed around. The
+data descriptor reports background 99.55%, ventricles 0.30%, pathological WMH 0.10%, incidental WMH
+0.05%; measured on the 256×256 resampled volumes this pipeline trains on, it is 99.33 / 0.47 / 0.15
+/ 0.05. The paper quotes the measured figures, since those are what the loss actually sees.
 
 > **Note on published baselines.** Numbers from the MS3SEG paper's Table 7 (four-class:
 > U-Net 0.8897 / 0.6452 / 0.6686) and Table 9 (binary lesion-only: U-Net 0.7469) are **different
@@ -247,13 +273,32 @@ WMH 0.05% — and is what every component of the objective is designed around.
 ```bibtex
 @inproceedings{msdistill2026,
   title     = {Region-Decoupled Distillation of a Transformer Teacher for
-              Multiple Sclerosis Lesion Segmentation},
+               Multiple Sclerosis Lesion Segmentation},
   author    = {Mehmood, M. Zakria},
   booktitle = {Proc. 23rd Int. Conf. Frontiers of Information Technology (FIT)},
   year      = {2026},
+  url       = {https://github.com/ZakriaComputerEngineer/ms-kd-seg},
+}
+```
+
+Please cite the dataset as well — this work reports on it but did not create it:
+
+```bibtex
+@article{ms3seg2026,
+  title   = {A multiple sclerosis {MRI} dataset with tri-mask annotations for
+             lesion segmentation},
+  author  = {Bashiri Bawil, Mahdi and Shamsi, Mousa and Ghalehasadi, Aydin and
+             Fahmi Jafargholkhanloo, Ali and Shakeri Bavil, Abolhassan},
+  journal = {Scientific Data},
+  volume  = {13},
+  pages   = {867},
+  year    = {2026},
+  doi     = {10.1038/s41597-026-07184-5},
 }
 ```
 
 ## License
 
-MIT for this code. MS3SEG is CC BY 4.0 and is not redistributed here.
+MIT for this code — see [LICENSE](LICENSE). MS3SEG is CC BY 4.0 and is **not** redistributed here;
+obtain it from Figshare. Pretrained Mix Transformer weights are downloaded at run time from the
+Hugging Face Hub and remain under NVIDIA's terms for those checkpoints.
