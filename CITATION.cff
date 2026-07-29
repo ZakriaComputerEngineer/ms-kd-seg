@@ -1,0 +1,61 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the paper and the MS3SEG dataset."
+title: "Region-Decoupled Distillation for CPU-Deployable MS Lesion Segmentation"
+abstract: >-
+  Reference implementation of a knowledge-distillation study transferring a
+  full-resolution Mix Transformer teacher into a 0.49M-parameter U-Net for
+  four-class multiple sclerosis lesion segmentation on the MS3SEG cohort,
+  including a controlled eight-variant ablation of distillation objectives under
+  extreme class imbalance.
+type: software
+license: MIT
+version: 1.0.0
+date-released: "2026-07-29"
+repository-code: "https://github.com/zakriamehmood/ms-kd-seg"
+keywords:
+  - multiple sclerosis
+  - lesion segmentation
+  - knowledge distillation
+  - model compression
+  - medical imaging
+  - class imbalance
+authors:
+  - family-names: "Mehmood"
+    given-names: "M. Zakria"
+    affiliation: "National University of Sciences & Technology, Islamabad, Pakistan"
+    email: "zakriamehmood2001@gmail.com"
+
+preferred-citation:
+  type: conference-paper
+  title: >-
+    Region-Decoupled Distillation of a Transformer Teacher for Multiple
+    Sclerosis Lesion Segmentation
+  collection-title: >-
+    Proceedings of the 23rd International Conference on Frontiers of Information
+    Technology (FIT)
+  year: 2026
+  authors:
+    - family-names: "Mehmood"
+      given-names: "M. Zakria"
+      affiliation: "National University of Sciences & Technology, Islamabad, Pakistan"
+
+references:
+  - type: article
+    title: >-
+      A multiple sclerosis MRI dataset with tri-mask annotations for lesion
+      segmentation
+    journal: "Scientific Data"
+    volume: 13
+    year: 2026
+    doi: "10.1038/s41597-026-07184-5"
+    authors:
+      - family-names: "Bashiri Bawil"
+        given-names: "Mahdi"
+      - family-names: "Shamsi"
+        given-names: "Mousa"
+      - family-names: "Ghalehasadi"
+        given-names: "Aydin"
+      - family-names: "Fahmi Jafargholkhanloo"
+        given-names: "Ali"
+      - family-names: "Shakeri Bavil"
+        given-names: "Abolhassan"

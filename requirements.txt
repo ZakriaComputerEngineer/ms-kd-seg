@@ -1,0 +1,15 @@
+# Core. Version floors, not pins: the code is tested against current releases and
+# the floors mark the earliest version whose API it relies on.
+torch>=2.1            # torch.utils.flop_counter (exact MAC counting) landed in 2.1
+transformers>=4.30    # SegformerModel / SegformerForSemanticSegmentation
+numpy>=1.24
+scipy>=1.10           # connected components and distance transforms for lesion-wise + boundary metrics
+scikit-learn>=1.2     # patient-level KFold only
+nibabel>=5.0          # NIfTI I/O
+matplotlib>=3.7
+tqdm>=4.65
+
+# Optional. `efficiency.py` prefers torch.utils.flop_counter, which handles
+# attention matmuls; thop is a fallback for older torch and understates
+# transformers because it counts convolutions and linears only.
+# thop>=0.1.1
